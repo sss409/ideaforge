@@ -3,7 +3,7 @@ created: "2026-03-11"
 project: "IdeaForge MVP"
 assignee: "開発"
 priority: high
-status: open
+status: done
 ---
 
 # 評価ルブリック + LLM-as-judge を設計する
@@ -23,8 +23,8 @@ status: open
 - 基準: 平均 20/25 以上で Phase 0 クリア
 
 ## 完了条件
-- [ ] 評価ルブリック（5軸 × 採点基準）を文書化
-- [ ] LLM-as-judge のプロンプトを作成
+- [x] 評価ルブリック（5軸 × 採点基準）を文書化 → `evals/rubric-v1.md`
+- [x] LLM-as-judge のプロンプトを作成 → `evals/llm-judge-prompt-v1.md`
 - [ ] テストアイデア 5件で試行し、スコアの妥当性を確認
 
 ## メモ
