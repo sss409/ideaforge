@@ -4,7 +4,7 @@ function HeroSection() {
   return (
     <section className="px-6 pt-24 pb-20 text-center">
       <p className="mb-4 text-sm font-semibold tracking-wide text-indigo-600 uppercase">
-        AI-Powered Idea Refinement
+        AI-Powered Idea Refinement — 永久無料
       </p>
       <h1 className="mx-auto max-w-3xl text-5xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-6xl">
         30分で、思いつきを
@@ -17,12 +17,15 @@ function HeroSection() {
         生のアイデアを、投資家や企業が評価できる
         「アイデアパッケージ」に変換します。
       </p>
+      <p className="mt-4 text-sm font-medium text-indigo-600">
+        ずっと無料。回数無制限。アカウント登録不要。
+      </p>
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <a
           href={TYPEFORM_URL}
           className="rounded-xl bg-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition hover:bg-indigo-700"
         >
-          最初のアイデアを無料で精錬する →
+          無料でアイデアを精錬する →
         </a>
       </div>
     </section>
@@ -161,9 +164,10 @@ function BeforeAfterSection() {
               構造化データ + 市場分析 + 競合5社比較 + 収益モデル
             </p>
             <ul className="mt-6 space-y-2 text-gray-700">
-              <li>✅ ターゲット・競合・市場規模が明確</li>
-              <li>✅ リスクと対策が整理済み</li>
-              <li>✅ 次にやるべきことが見える</li>
+              <li>✅ TAM 8,500億円、SAM 420億円を算出</li>
+              <li>✅ 競合5社のポジショニングマップ付き</li>
+              <li>✅ 3つの収益モデル候補と推奨戦略</li>
+              <li>✅ 次にやるべき3ステップが明確</li>
             </ul>
           </div>
         </div>
@@ -172,20 +176,89 @@ function BeforeAfterSection() {
   );
 }
 
-const FREE_FEATURES = [
-  "アイデアの構造化 + 深掘り質問",
-  "市場規模・競合5社の比較分析",
-  "実現可能性・リスク評価",
-  "収益モデル提案",
-  "完全レポート納品（24時間以内）",
+const CREATOR_BENEFITS = [
+  {
+    icon: "🎁",
+    title: "完全無料",
+    description: "精錬レポートは何度でも無料。隠れた料金なし。ずっと無料です。",
+  },
+  {
+    icon: "💎",
+    title: "レベニューシェア",
+    description: "あなたのアイデアが企業に採用されたら、成約額の50〜70%を受け取れます。",
+  },
+  {
+    icon: "📈",
+    title: "実績が積み上がる",
+    description: "精錬スコアや企業閲覧数が蓄積。あなたの発想力が可視化されます。",
+  },
 ] as const;
+
+function CreatorBenefitsSection() {
+  return (
+    <section className="bg-gray-50 px-6 py-20">
+      <div className="mx-auto max-w-5xl">
+        <h2 className="text-center text-3xl font-bold text-gray-900">
+          発案者のメリット
+        </h2>
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
+          {CREATOR_BENEFITS.map((b) => (
+            <div
+              key={b.title}
+              className="rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm"
+            >
+              <div className="text-4xl">{b.icon}</div>
+              <h3 className="mt-4 text-xl font-bold text-gray-900">
+                {b.title}
+              </h3>
+              <p className="mt-3 text-gray-600">{b.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyFreeSection() {
+  return (
+    <section className="px-6 py-20">
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="text-3xl font-bold text-gray-900">
+          なぜ<span className="text-indigo-600">無料</span>なのか？
+        </h2>
+        <div className="mt-8 space-y-6 text-lg text-gray-600 text-left">
+          <p>
+            IdeaForge は、
+            <span className="font-semibold text-gray-900">
+              アイデアを求める企業
+            </span>
+            から収益を得る二面マーケットプレイスです。
+          </p>
+          <p>
+            LinkedInが求職者無料・企業課金であるように、
+            IdeaForge は発案者を永久無料にすることで、
+            より多くの優れたアイデアが集まる場を作ります。
+          </p>
+          <p>
+            あなたのアイデアが精錬され、企業の目に留まり、
+            採用されたら——
+            <span className="font-semibold text-indigo-600">
+              成約額の50〜70%があなたの収入になります。
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function PricingSection() {
   return (
     <section className="bg-gray-50 px-6 py-20">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold text-gray-900">
-          すべて、<span className="text-indigo-600">無料</span>です。
+          発案者は、<span className="text-indigo-600">ずっと無料</span>。
         </h2>
         <p className="mt-4 text-gray-600">
           アカウント登録も不要。アイデアを送るだけで、AIが精錬レポートをお届けします。
@@ -193,15 +266,33 @@ function PricingSection() {
         <div className="mt-10 rounded-2xl border-2 border-indigo-600 bg-white p-8 shadow-xl text-left">
           <div className="text-center">
             <span className="text-5xl font-extrabold text-gray-900">¥0</span>
-            <p className="mt-2 text-sm text-gray-500">制限なし・回数無制限</p>
+            <p className="mt-2 text-sm text-gray-500">永久無料・回数無制限</p>
           </div>
           <ul className="mt-8 space-y-4">
-            {FREE_FEATURES.map((f) => (
-              <li key={f} className="flex items-start gap-3 text-gray-700">
-                <span className="mt-0.5 text-indigo-600 font-bold">✓</span>
-                {f}
-              </li>
-            ))}
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="mt-0.5 text-indigo-600 font-bold">✓</span>
+              アイデアの構造化 + 深掘り質問
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="mt-0.5 text-indigo-600 font-bold">✓</span>
+              市場規模・競合5社の比較分析
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="mt-0.5 text-indigo-600 font-bold">✓</span>
+              実現可能性・リスク評価
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="mt-0.5 text-indigo-600 font-bold">✓</span>
+              収益モデル提案
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="mt-0.5 text-indigo-600 font-bold">✓</span>
+              完全レポート納品（24時間以内）
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="mt-0.5 text-indigo-600 font-bold">✓</span>
+              企業採用時のレベニューシェア（50〜70%）
+            </li>
           </ul>
           <a
             href={TYPEFORM_URL}
@@ -217,8 +308,8 @@ function PricingSection() {
 
 const FAQS = [
   {
-    q: "本当に無料ですか？",
-    a: "はい、完全無料です。隠れた料金やアップセルはありません。現在はサービスの品質向上のため、無料で提供しています。",
+    q: "本当にずっと無料ですか？",
+    a: "はい、発案者は永久無料です。IdeaForge はアイデアを求める企業側から収益を得るモデルのため、発案者に課金することはありません。",
   },
   {
     q: "どんなアイデアでも精錬できますか？",
@@ -230,7 +321,11 @@ const FAQS = [
   },
   {
     q: "自分のアイデアが盗まれることはありませんか？",
-    a: "投稿されたアイデアは暗号化して保管され、あなたの許可なく第三者に開示されることはありません。",
+    a: "投稿されたアイデアは暗号化して保管され、あなたの許可なく第三者に開示されることはありません。企業がアクセスできるのは匿名化された概要のみです。",
+  },
+  {
+    q: "レベニューシェアとは何ですか？",
+    a: "あなたのアイデアが企業に採用・契約された場合、成約額の50〜70%があなたに支払われます。アイデアを出すだけでなく、収益にもつながる仕組みです。",
   },
   {
     q: "レポートはどのくらいで届きますか？",
@@ -265,7 +360,7 @@ function CtaSection() {
         最初のアイデアを、今すぐ精錬する。
       </h2>
       <p className="mx-auto mt-4 max-w-xl text-lg text-indigo-100">
-        完全無料。登録不要。あなたのアイデアの可能性を、数字で確認しましょう。
+        永久無料。登録不要。あなたのアイデアの可能性を、数字で確認しましょう。
       </p>
       <a
         href={TYPEFORM_URL}
@@ -293,6 +388,8 @@ export default function LandingPage() {
       <SolutionSection />
       <ProcessSection />
       <BeforeAfterSection />
+      <CreatorBenefitsSection />
+      <WhyFreeSection />
       <PricingSection />
       <FaqSection />
       <CtaSection />
