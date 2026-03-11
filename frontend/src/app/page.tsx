@@ -1,6 +1,4 @@
 const TYPEFORM_URL = "https://example.typeform.com/ideaforge";
-const STRIPE_STANDARD_URL = "https://buy.stripe.com/example-standard";
-const STRIPE_PRO_URL = "https://buy.stripe.com/example-pro";
 
 function HeroSection() {
   return (
@@ -174,108 +172,43 @@ function BeforeAfterSection() {
   );
 }
 
-const PLANS = [
-  {
-    name: "お試し",
-    price: "無料",
-    period: "",
-    description: "まずはアイデアの可能性を確認",
-    features: [
-      "Step 1-2（構造化 + 市場分析）",
-      "競合5社の比較レポート",
-      "24時間以内に納品",
-    ],
-    cta: "無料で試す",
-    href: TYPEFORM_URL,
-    featured: false,
-  },
-  {
-    name: "スタンダード",
-    price: "¥4,980",
-    period: "/ 1アイデア",
-    description: "本格的な事業計画レポート",
-    features: [
-      "全5ステップの完全レポート",
-      "収益モデル提案付き",
-      "リスク分析 + 対策",
-      "24時間以内に納品",
-    ],
-    cta: "精錬する",
-    href: STRIPE_STANDARD_URL,
-    featured: true,
-  },
-  {
-    name: "プロ",
-    price: "¥14,800",
-    period: "/ 1アイデア",
-    description: "専門家のフィードバック付き",
-    features: [
-      "スタンダードの全内容",
-      "専門家によるフィードバック",
-      "30分のオンライン相談",
-      "修正1回付き",
-    ],
-    cta: "相談付きで精錬する",
-    href: STRIPE_PRO_URL,
-    featured: false,
-  },
+const FREE_FEATURES = [
+  "アイデアの構造化 + 深掘り質問",
+  "市場規模・競合5社の比較分析",
+  "実現可能性・リスク評価",
+  "収益モデル提案",
+  "完全レポート納品（24時間以内）",
 ] as const;
 
 function PricingSection() {
   return (
     <section className="bg-gray-50 px-6 py-20">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="text-center text-3xl font-bold text-gray-900">
-          シンプルな料金体系
+      <div className="mx-auto max-w-2xl text-center">
+        <h2 className="text-3xl font-bold text-gray-900">
+          すべて、<span className="text-indigo-600">無料</span>です。
         </h2>
-        <p className="mt-4 text-center text-gray-600">
-          まずは無料でお試し。納得してからアップグレード。
+        <p className="mt-4 text-gray-600">
+          アカウント登録も不要。アイデアを送るだけで、AIが精錬レポートをお届けします。
         </p>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {PLANS.map((plan) => (
-            <div
-              key={plan.name}
-              className={`flex flex-col rounded-2xl border-2 p-8 ${
-                plan.featured
-                  ? "border-indigo-600 shadow-xl"
-                  : "border-gray-200"
-              }`}
-            >
-              {plan.featured && (
-                <p className="mb-4 text-center text-sm font-semibold text-indigo-600">
-                  人気プラン
-                </p>
-              )}
-              <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
-              <div className="mt-4">
-                <span className="text-4xl font-extrabold text-gray-900">
-                  {plan.price}
-                </span>
-                {plan.period && (
-                  <span className="ml-1 text-gray-500">{plan.period}</span>
-                )}
-              </div>
-              <p className="mt-2 text-sm text-gray-500">{plan.description}</p>
-              <ul className="mt-6 flex-1 space-y-3">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-gray-700">
-                    <span className="mt-0.5 text-indigo-600">✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={plan.href}
-                className={`mt-8 block rounded-xl px-6 py-3 text-center font-semibold transition ${
-                  plan.featured
-                    ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                    : "border-2 border-gray-300 text-gray-700 hover:border-indigo-600 hover:text-indigo-600"
-                }`}
-              >
-                {plan.cta}
-              </a>
-            </div>
-          ))}
+        <div className="mt-10 rounded-2xl border-2 border-indigo-600 bg-white p-8 shadow-xl text-left">
+          <div className="text-center">
+            <span className="text-5xl font-extrabold text-gray-900">¥0</span>
+            <p className="mt-2 text-sm text-gray-500">制限なし・回数無制限</p>
+          </div>
+          <ul className="mt-8 space-y-4">
+            {FREE_FEATURES.map((f) => (
+              <li key={f} className="flex items-start gap-3 text-gray-700">
+                <span className="mt-0.5 text-indigo-600 font-bold">✓</span>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={TYPEFORM_URL}
+            className="mt-8 block rounded-xl bg-indigo-600 px-6 py-4 text-center text-lg font-semibold text-white transition hover:bg-indigo-700"
+          >
+            無料でアイデアを精錬する →
+          </a>
         </div>
       </div>
     </section>
@@ -283,6 +216,10 @@ function PricingSection() {
 }
 
 const FAQS = [
+  {
+    q: "本当に無料ですか？",
+    a: "はい、完全無料です。隠れた料金やアップセルはありません。現在はサービスの品質向上のため、無料で提供しています。",
+  },
   {
     q: "どんなアイデアでも精錬できますか？",
     a: "ビジネスアイデアであれば、ジャンルを問いません。SaaS、アプリ、マーケットプレイス、飲食、教育など幅広く対応しています。",
@@ -293,11 +230,11 @@ const FAQS = [
   },
   {
     q: "自分のアイデアが盗まれることはありませんか？",
-    a: "投稿されたアイデアは暗号化して保管され、あなたの許可なく第三者に開示されることはありません。NDA締結オプションもあります。",
+    a: "投稿されたアイデアは暗号化して保管され、あなたの許可なく第三者に開示されることはありません。",
   },
   {
     q: "レポートはどのくらいで届きますか？",
-    a: "お試しプランは即時。スタンダード・プロは24時間以内にお届けします。",
+    a: "24時間以内にメールでお届けします。",
   },
 ] as const;
 
@@ -328,7 +265,7 @@ function CtaSection() {
         最初のアイデアを、今すぐ精錬する。
       </h2>
       <p className="mx-auto mt-4 max-w-xl text-lg text-indigo-100">
-        無料プランでAI精錬を体験。あなたのアイデアの可能性を、数字で確認しましょう。
+        完全無料。登録不要。あなたのアイデアの可能性を、数字で確認しましょう。
       </p>
       <a
         href={TYPEFORM_URL}
